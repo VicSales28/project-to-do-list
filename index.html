@@ -4,9 +4,37 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>To-Do List Victoria Sales</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  
+  <main>
+    <header>
+      <h1>Minha Lista de Tarefas</h1>
+      <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
+    </header>
+
+    <div>
+      <input id="texto-tarefa" placeholder="Digite nova tarefa">
+      <button id="criar-tarefa">Adiciona</button>
+    </div>
+
+    <ol id="lista-tarefas"></ol>
+
+    <div>
+      <button id="remover-selecionado" title="Remover selecionado">Apaga item selecionado</button>
+      <button id="remover-finalizados" title="Remover finalizados">Remover finalizados</button>
+      <button id="apaga-tudo" title="Remover tudo">Apaga tudo</button>
+
+      <button id="salvar-tarefas" title="Salvar tarefas">Salvar tarefas</button>
+
+      <button id="mover-cima" title="Mover para cima">Mover para cima</button>
+      <button id="mover-baixo" title="Mover para baixo">Mover para baixo</button>
+    </div>
+  </main>
+  <footer>
+    <p>Desenvolvido por Victoria Sales</p>
+  </footer>
+  <script src="script.js"></script>
 </body>
 </html>
