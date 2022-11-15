@@ -32,6 +32,12 @@ const addNewTask = () => {
 
 addTaskBtn.addEventListener('click', addNewTask);
 
+function toggleAsCompleted(event) {
+  event.target.classList.toggle('completed');
+}
+
+tasksList.addEventListener('dblclick', toggleAsCompleted);
+
 function clearAllTasks() {
   for (let index = tasksList.childNodes.length - 1; index >= 0; index -= 1) {
     tasksList.removeChild(tasksList.childNodes[index]);
