@@ -2,13 +2,13 @@ const newTaskInput = document.getElementById('texto-tarefa');
 const addTaskBtn = document.getElementById('criar-tarefa');
 const tasksList = document.getElementById('lista-tarefas');
 
-//const removeSelectedBtn = document.getElementById('remover-selecionado');
+const removeSelectedBtn = document.getElementById('remover-selecionado');
 const clearCompletedBtn = document.getElementById('remover-finalizados');
 const clearAllTasksBtn = document.getElementById('apaga-tudo');
 
-//const saveItemsBtn = document.getElementById('salvar-tarefas');
-//const moveUpBtn = document.getElementById('mover-cima');
-//const moveDownBtn = document.getElementById('mover-baixo');
+// const saveItemsBtn = document.getElementById('salvar-tarefas');
+// const moveUpBtn = document.getElementById('mover-cima');
+// const moveDownBtn = document.getElementById('mover-baixo');
 
 const clearTaskInput = () => {
   newTaskInput.value = '';
@@ -21,6 +21,15 @@ function changeItemBackgroundColor(event) {
   }
   listItem.classList.add('selected');
 }
+
+function removeSelectedItem() {
+  const selectedItem = document.querySelector('.selected');
+  if (selectedItem) {
+    selectedItem.remove();
+  }
+}
+
+removeSelectedBtn.addEventListener('click', removeSelectedItem);
 
 const addNewTask = () => {
   const newListItem = document.createElement('li');
@@ -53,5 +62,6 @@ const clearCompletedTasks = () => {
       listItem[index].remove();
     }
   }
-}
+};
+
 clearCompletedBtn.addEventListener('click', clearCompletedTasks);
