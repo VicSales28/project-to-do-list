@@ -6,7 +6,7 @@ const removeSelectedBtn = document.getElementById('remover-selecionado');
 const clearCompletedBtn = document.getElementById('remover-finalizados');
 const clearAllTasksBtn = document.getElementById('apaga-tudo');
 
-// const saveItemsBtn = document.getElementById('salvar-tarefas');
+const saveItemsBtn = document.getElementById('salvar-tarefas');
 // const moveUpBtn = document.getElementById('mover-cima');
 // const moveDownBtn = document.getElementById('mover-baixo');
 
@@ -65,3 +65,19 @@ const clearCompletedTasks = () => {
 };
 
 clearCompletedBtn.addEventListener('click', clearCompletedTasks);
+
+function saveTasks() {
+  const listItem = document.querySelectorAll('#lista-tarefas li');
+  const tasks = [];
+  for (let index = 0; index < listItem.length; index += 1) {
+    const task = listItem[index];
+    const object = {
+      taskDescription: task.innerText,
+      isCompleted: task.classList.contains('completed'),
+    };
+    tasks.push(object);
+  }
+  localStorage.setItem('listTasks', JSON.stringify(tasks));
+}
+
+saveItemsBtn.addEventListener('click', saveTasks);
