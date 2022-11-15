@@ -3,7 +3,7 @@ const addTaskBtn = document.getElementById('criar-tarefa');
 const tasksList = document.getElementById('lista-tarefas');
 
 //const removeSelectedBtn = document.getElementById('remover-selecionado');
-//const clearCompletedBtn = document.getElementById('remover-finalizados');
+const clearCompletedBtn = document.getElementById('remover-finalizados');
 const clearAllTasksBtn = document.getElementById('apaga-tudo');
 
 //const saveItemsBtn = document.getElementById('salvar-tarefas');
@@ -45,3 +45,13 @@ function clearAllTasks() {
 }
 
 clearAllTasksBtn.addEventListener('click', clearAllTasks);
+
+const clearCompletedTasks = () => {
+  const listItem = document.querySelectorAll('#lista-tarefas li');
+  for (let index = 0; index < listItem.length; index += 1) {
+    if (listItem[index].classList.contains('completed')) {
+      listItem[index].remove();
+    }
+  }
+}
+clearCompletedBtn.addEventListener('click', clearCompletedTasks);
