@@ -7,6 +7,10 @@ const clearCompletedBtn = document.getElementById('remover-finalizados');
 const clearAllTasksBtn = document.getElementById('apaga-tudo');
 
 const saveItemsBtn = document.getElementById('salvar-tarefas');
+const previousSavedList = localStorage.getItem('listTasks');
+
+const list = JSON.parse(previousSavedList);
+
 // const moveUpBtn = document.getElementById('mover-cima');
 // const moveDownBtn = document.getElementById('mover-baixo');
 
@@ -81,3 +85,24 @@ function saveTasks() {
 }
 
 saveItemsBtn.addEventListener('click', saveTasks);
+
+function rescuePreviousList() {
+  let tasks = {};
+  for (let index = 0; list.length > index; index += 1) {
+    let key = String(index);
+    tasks[key] = {
+      taskDescription: list[index].taskDescription,
+      isCompleted: list[index].isCompleted,
+    }
+    const item = document.createElement('li');
+    item.innerText = tasks[key].taskDescription;
+    if (list[index].isCompleted) {
+      item.classList.add('completed');
+    }
+    tasksList.appendChild(item);
+  }
+}
+
+window.onload = () => {
+  rescuePreviousList()
+}
