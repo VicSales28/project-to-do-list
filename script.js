@@ -1,0 +1,26 @@
+const newTaskInput = document.getElementById('texto-tarefa');
+const addTaskBtn = document.getElementById('criar-tarefa');
+const tasksList = document.getElementById('lista-tarefas');
+
+const removeSelectedBtn = document.getElementById('remover-selecionado');
+const clearCompletedBtn = document.getElementById('remover-finalizados');
+const clearAllBtn = document.getElementById('apaga-tudo');
+
+const saveItemsBtn = document.getElementById('salvar-tarefas');
+const moveUpBtn = document.getElementById('mover-cima');
+const moveDownBtn = document.getElementById('mover-baixo');
+
+const clearTaskInput = () => {
+  newTaskInput.value = '';
+};
+
+const addNewTask = (event) => {
+
+    const newListItem = document.createElement('li');
+    newListItem.innerText = newTaskInput.value;
+    tasksList.appendChild(newListItem); 
+    clearTaskInput ();
+};
+
+addTaskBtn.addEventListener('click', addNewTask);
+
