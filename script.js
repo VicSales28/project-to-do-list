@@ -14,13 +14,20 @@ const clearTaskInput = () => {
   newTaskInput.value = '';
 };
 
-const addNewTask = (event) => {
-
-    const newListItem = document.createElement('li');
-    newListItem.innerText = newTaskInput.value;
-    tasksList.appendChild(newListItem); 
-    clearTaskInput ();
+const addNewTask = () => {
+  const newListItem = document.createElement('li');
+  newListItem.innerText = newTaskInput.value;
+  tasksList.appendChild(newListItem);
+  clearTaskInput();
+  newListItem.addEventListener('click', changeItemBackgroundColor);
 };
 
 addTaskBtn.addEventListener('click', addNewTask);
 
+function changeItemBackgroundColor(event) {
+  const listItem = event.target;
+  if (document.querySelector('.selected')) {
+    document.querySelector('.selected').classList.remove('selected');
+  }
+  listItem.classList.add('selected');
+}
