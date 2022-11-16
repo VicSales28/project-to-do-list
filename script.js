@@ -1,17 +1,13 @@
 const newTaskInput = document.getElementById('texto-tarefa');
 const addTaskBtn = document.getElementById('criar-tarefa');
 const tasksList = document.getElementById('lista-tarefas');
-
 const removeSelectedBtn = document.getElementById('remover-selecionado');
 const clearCompletedBtn = document.getElementById('remover-finalizados');
 const clearAllTasksBtn = document.getElementById('apaga-tudo');
-
 const saveItemsBtn = document.getElementById('salvar-tarefas');
 const previousSavedList = localStorage.getItem('listTasks');
-
-
-// const moveUpBtn = document.getElementById('mover-cima');
-// const moveDownBtn = document.getElementById('mover-baixo');
+const moveUpBtn = document.getElementById('mover-cima');
+const moveDownBtn = document.getElementById('mover-baixo');
 
 const clearTaskInput = () => {
   newTaskInput.value = '';
@@ -32,8 +28,6 @@ function removeSelectedItem() {
   }
 }
 
-removeSelectedBtn.addEventListener('click', removeSelectedItem);
-
 const addNewTask = () => {
   const newListItem = document.createElement('li');
   newListItem.innerText = newTaskInput.value;
@@ -42,21 +36,15 @@ const addNewTask = () => {
   newListItem.addEventListener('click', changeItemBackgroundColor);
 };
 
-addTaskBtn.addEventListener('click', addNewTask);
-
 function toggleAsCompleted(event) {
   event.target.classList.toggle('completed');
 }
-
-tasksList.addEventListener('dblclick', toggleAsCompleted);
 
 function clearAllTasks() {
   for (let index = tasksList.childNodes.length - 1; index >= 0; index -= 1) {
     tasksList.removeChild(tasksList.childNodes[index]);
   }
 }
-
-clearAllTasksBtn.addEventListener('click', clearAllTasks);
 
 const clearCompletedTasks = () => {
   const listItem = document.querySelectorAll('#lista-tarefas li');
@@ -66,8 +54,6 @@ const clearCompletedTasks = () => {
     }
   }
 };
-
-clearCompletedBtn.addEventListener('click', clearCompletedTasks);
 
 function saveTasks() {
   const listItem = document.querySelectorAll('#lista-tarefas li');
@@ -83,27 +69,50 @@ function saveTasks() {
   localStorage.setItem('listTasks', JSON.stringify(tasks));
 }
 
-saveItemsBtn.addEventListener('click', saveTasks);
-
 function rescuePreviousList() {
-   const list = JSON.parse(previousSavedList);
-   const tasks = {};
-   if (list != null && list !== '[]') {
-   for (let index = 0; list.length > index; index += 1) {
-     const key = String(index);
-     tasks[key] = {
-       taskDescription: list[index].taskDescription,
-       isCompleted: list[index].isCompleted,
-     };
-     const item = document.createElement('li');
-     item.innerText = tasks[key].taskDescription;
-     if (list[index].isCompleted) {
-       item.classList.add('completed');
-     }
-    tasksList.appendChild(item);
-   }
- }
+  const list = JSON.parse(previousSavedList);
+  const tasks = {};
+  if (list != null && list !== '[]') {
+    for (let index = 0; list.length > index; index += 1) {
+      tasks[String(index)] = {
+        taskDescription: list[index].taskDescription,
+        isCompleted: list[index].isCompleted,
+      };
+      const item = document.createElement('li');
+      item.innerText = tasks[String(index)].taskDescription;
+      if (list[index].isCompleted) {
+        item.classList.add('completed');
+      }
+      tasksList.appendChild(item);
+    }
+  }
 }
- window.onload = () => {
-   rescuePreviousList();
+
+window.onload = () => {
+  rescuePreviousList();
 };
+
+function moveItem(event) {
+  const selectedItem = document.querySelector('.selected');
+  if (selectedItem) {
+    const previousItem = selectedItem.previousElementSibling;
+    const nextItem = selectedItem.nextElementSibling;
+    if (event.target === moveUpBtn && selectedItem !== tasksList.firstElementChild) {
+      tasksList.removeChild(selectedItem);
+      tasksList.insertBefore(selectedItem, previousItem);
+    } else if (event.target === moveDownBtn && selectedItem !== tasksList.lastElementChild) {
+      tasksList.removeChild(selectedItem);
+      tasksList.insertBefore(selectedItem, nextItem.nextElementSibling);
+      console.log(nextItem)
+    }
+  }
+}
+
+removeSelectedBtn.addEventListener('click', removeSelectedItem);
+addTaskBtn.addEventListener('click', addNewTask);
+tasksList.addEventListener('dblclick', toggleAsCompleted);
+clearAllTasksBtn.addEventListener('click', clearAllTasks);
+clearCompletedBtn.addEventListener('click', clearCompletedTasks);
+saveItemsBtn.addEventListener('click', saveTasks);
+moveUpBtn.addEventListener('click', moveItem);
+moveDownBtn.addEventListener('click', moveItem);
