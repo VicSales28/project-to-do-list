@@ -1,8 +1,135 @@
+body {
+  background-color: rgba(231, 187, 234, 0.792);
+  font-family: Scope One, serif;
+}
+
 .selected {
-  background-color: gray;
+  background-color: rgba(11, 152, 159, 0.827);
   color: white;
+  width: fit-content;
 }
 
 .completed {
   text-decoration: line-through solid black;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+header {
+  text-align: center;
+}
+
+header h1 {
+  color: rgb(190, 30, 94);
+  font-size: 60px;
+  font-weight: 700;
+  margin-bottom: 1px;
+}
+
+header p {
+  font-size: 32px;
+}
+
+header p span {
+  text-decoration: line-through;
+}
+
+#nav-container {
+  background-color: rgba(130, 85, 124, 0.819);
+  border-radius: 22px;
+  box-shadow: 0 2px 5px rgba(29, 29, 43, 0.511);
+  margin-bottom: 30px;
+  margin-right: 50px;
+  padding: 20px;
+  width: fit-content;
+}
+
+#nav-container button {
+  border: 2px solid rgb(11, 11, 11, 0.8);
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: Scope One, serif;
+  font-size: 16px;
+  font-weight: 550;
+  margin-bottom: 2px;
+  padding: 10px 20px;
+  width: fit-content;
+}
+
+#nav-container button:hover {
+  background-color: rgba(223, 229, 229, 0.698);
+}
+
+#texto-container {
+  width: 50%;
+}
+
+#tarefas {
+  align-items: center;
+  background-color: rgba(249, 223, 24, 0.442);
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgb(41, 29, 43);
+  padding: 20px 50px;
+  width: 80%;
+}
+
+#nova-tarefa {
+  align-items: center;
+  background-color: white;
+  border: 1px solid purple;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(41, 29, 43, 0.245);
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  padding: 6px 12px;
+  width: 100%;
+}
+
+#nova-tarefa input {
+  border: 0;
+  font-family: Scope One, serif;
+  font-size: 20px;
+  text-indent: 5px;
+  width: 80%;
+}
+
+#nova-tarefa input:focus {
+  outline: none;
+}
+
+#criar-tarefa {
+  background-color: rgb(151, 95, 173);
+  border: 2px solid rgba(67, 9, 71, 0.8);
+  border-radius: 100%;
+  box-shadow: 0 2px 5px rgba(41, 29, 43, 0.275);
+  color: white;
+  cursor: pointer;
+  height: 40px;
+  padding: 0;
+  width: 42px;
+}
+
+#criar-tarefa i {
+  font-size: 20px;
+}
+
+#criar-tarefa:hover {
+  background-color: rgb(73, 48, 83);
+}
+
+#lista-tarefas li {
+  font-size: 22px;
+  list-style-type: circle;
+  margin-bottom: 10px;
+}
+
+footer {
+  color: rgb(38, 14, 47);
+  margin: 20px 0;
+  text-align: center;
 }

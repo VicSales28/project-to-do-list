@@ -4,37 +4,50 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>To-Do List Victoria Sales</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Scope+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Lista de tarefas</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
+  <header>
+    <h1>Minha Lista de Tarefas</h1>
+    <p id="funcionamento">Clique duas vezes em um item para marcá-lo como <span>completo</span></p>
+  </header>
+
   <main>
-    <header>
-      <h1>Minha Lista de Tarefas</h1>
-      <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
-    </header>
+    <section id="nav-container">
+      <button id="mover-cima"><i class="fa fa-arrow-up"></i> Mover para cima</button>
+      <button id="mover-baixo"><i class="fa fa-arrow-down"></i> Mover para baixo</button>
+      <button id="remover-selecionado"><i class="fa fa-hand-pointer-o"></i> Apagar selecionada</button>
+      <button id="remover-finalizados"><i class="fa fa-trash-o"></i> Apagar finalizadas</button>
+      <button id="apaga-tudo"><i class="fa fa-trash"></i> Apagar tudo</button>
+      <button id="salvar-tarefas"><i class="fa fa-save"></i> Salvar tarefas</button>
+    </section>
 
-    <div>
-      <input id="texto-tarefa" placeholder="Digite nova tarefa">
-      <button id="criar-tarefa">Adiciona</button>
-    </div>
+    <section id="texto-container">
+      <div id="tarefas">
+        <div id="nova-tarefa">
+          <input id="texto-tarefa" placeholder="Digite uma nova tarefa">
+          <button id="criar-tarefa"><i class="fa fa-plus"></i>
+          </button>
+        </div>
+        <ol id="lista-tarefas"></ol>
+      </div>
+    </section>
 
-    <ol id="lista-tarefas"></ol>
-
-    <div>
-      <button id="remover-selecionado" title="Remover selecionado">Apaga item selecionado</button>
-      <button id="remover-finalizados" title="Remover finalizados">Remover finalizados</button>
-      <button id="apaga-tudo" title="Remover tudo">Apaga tudo</button>
-
-      <button id="salvar-tarefas" title="Salvar tarefas">Salvar tarefas</button>
-
-      <button id="mover-cima" title="Mover para cima">Mover para cima</button>
-      <button id="mover-baixo" title="Mover para baixo">Mover para baixo</button>
-    </div>
   </main>
+
   <footer>
-    <p>Desenvolvido por Victoria Sales</p>
+    <p>Desenvolvido em HTML, CSS e Javascript por <a href="https://github.com/VicSales28" target="_blank">Victoria
+        Sales</a> :)</p>
   </footer>
+
   <script src="script.js"></script>
 </body>
+
 </html>
